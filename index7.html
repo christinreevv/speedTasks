@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор RGB</title>
+    <style>
+        body { text-align: center; font-family: Arial, sans-serif; }
+        .color-box { width: 200px; height: 100px; margin: 20px auto; border: 1px solid black; }
+    </style>
+</head>
+<body>
+
+    <h2>Генератор цветов RGB</h2>
+    <div class="color-box" id="colorBox"></div>
+    <p>RGB: <span id="rgbValue">rgb(0,0,0)</span></p>
+
+    <label>R: <input type="range" id="red" min="0" max="255" value="0"></label>
+    <label>G: <input type="range" id="green" min="0" max="255" value="0"></label>
+    <label>B: <input type="range" id="blue" min="0" max="255" value="0"></label>
+
+    <script>
+        function updateColor() {
+            let r = document.getElementById("red").value;
+            let g = document.getElementById("green").value;
+            let b = document.getElementById("blue").value;
+            let color = `rgb(${r},${g},${b})`;
+            document.getElementById("colorBox").style.backgroundColor = color;
+            document.getElementById("rgbValue").innerText = color;
+        }
+
+        document.querySelectorAll("input").forEach(input => {
+            input.addEventListener("input", updateColor);
+        });
+
+        updateColor();
+    </script>
+
+</body>
+</html>

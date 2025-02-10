@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Рисование</title>
+</head>
+<body>
+
+    <canvas id="canvas" width="500" height="500" style="border: 1px solid black;"></canvas>
+    <button onclick="setColor('black')">Черный</button>
+    <button onclick="setColor('red')">Красный</button>
+    <button onclick="setColor('blue')">Синий</button>
+
+    <script>
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        let drawing = false, color = "black";
+
+        function setColor(c) { color = c; }
+        canvas.addEventListener("mousedown", () => drawing = true);
+        canvas.addEventListener("mouseup", () => drawing = false);
+        canvas.addEventListener("mousemove", e => {
+            if (!drawing) return;
+            ctx.fillStyle = color;
+            ctx.fillRect(e.offsetX, e.offsetY, 4, 4);
+        });
+    </script>
+
+</body>
+</html>

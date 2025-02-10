@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Экранная клавиатура</title>
+    <style>
+        #keyboard { display: flex; flex-wrap: wrap; width: 250px; margin: auto; }
+        button { width: 30px; height: 30px; margin: 3px; }
+        #input { width: 100%; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <h2>Экранная клавиатура</h2>
+    <input type="text" id="input" readonly>
+    <div id="keyboard"></div>
+    <button onclick="toggleShift()">Shift</button>
+
+    <script>
+        let shift = false;
+        const keys = "1234567890qwertyuiopasdfghjklzxcvbnm".split("");
+        const keyboard = document.getElementById("keyboard");
+
+        function toggleShift() {
+            shift = !shift;
+            document.querySelectorAll("#keyboard button").forEach(btn => {
+                btn.innerText = shift ? btn.innerText.toUpperCase() : btn.innerText.toLowerCase();
+            });
+        }
+
+        keys.forEach(char => {
+            let btn = document.createElement("button");
+            btn.innerText = char;
+            btn.onclick = () => document.getElementById("input").value += shift ? char.toUpperCase() : char;
+            keyboard.appendChild(btn);
+        });
+    </script>
+
+</body>
+</html>

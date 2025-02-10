@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Часы</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background: url('clock.png') no-repeat center/cover; }
+        .clock { position: relative; width: 200px; height: 200px; }
+        .hand { position: absolute; background: black; transform-origin: bottom; }
+        .hour { width: 6px; height: 50px; top: 50px; left: 97px; }
+        .minute { width: 4px; height: 70px; top: 30px; left: 98px; }
+        .second { width: 2px; height: 80px; top: 20px; left: 99px; background: red; }
+    </style>
+</head>
+<body>
+
+    <div class="clock">
+        <div class="hand hour"></div>
+        <div class="hand minute"></div>
+        <div class="hand second"></div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const now = new Date();
+            const hourDeg = (now.getHours() % 12) * 30 + now.getMinutes() * 0.5;
+            const minDeg = now.getMinutes() * 6;
+            const secDeg = now.getSeconds() * 6;
+
+            document.querySelector(".hour").style.transform = `rotate(${hourDeg}deg)`;
+            document.querySelector(".minute").style.transform = `rotate(${minDeg}deg)`;
+            document.querySelector(".second").style.transform = `rotate(${secDeg}deg)`;
+        }
+
+        setInterval(updateClock, 1000);
+        updateClock();
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Калькулятор</title>
+</head>
+<body>
+
+    <input id="expression" type="text" placeholder="Введите выражение">
+    <button onclick="calculate()">=</button>
+    <h3>Результат: <span id="result">0</span></h3>
+
+    <script>
+        function evaluateExpression(expression) {
+            expression = expression.replace(/\^/g, "**");
+            try {
+                return new Function("return " + expression)();
+            } catch {
+                return "Ошибка";
+            }
+        }
+
+        function calculate() {
+            let input = document.getElementById("expression").value;
+            document.getElementById("result").innerText = evaluateExpression(input);
+        }
+    </script>
+
+</body>
+</html>

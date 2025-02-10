@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Блог</title>
+    <style>
+        .container { display: flex; flex-wrap: wrap; }
+        .post { width: 32%; margin: 1%; background: #ddd; padding: 10px; }
+        @media (max-width: 992px) { .post { width: 48%; } }
+        @media (max-width: 768px) { .post { width: 100%; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="post">Пост 1</div>
+        <div class="post">Пост 2</div>
+        <div class="post">Пост 3</div>
+    </div>
+</body>
+</html>

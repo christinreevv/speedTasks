@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Анимация спрайта</title>
+    <style>
+        .sprite {
+            width: 80px;
+            height: 80px;
+            background: url('sprite.png') left center;
+            animation: run 0.5s steps(6) infinite, move 5s linear infinite;
+            position: absolute;
+            bottom: 50px;
+        }
+
+        @keyframes run {
+            0% { background-position: 0px; }
+            100% { background-position: -480px; }
+        }
+
+        @keyframes move {
+            from { left: 0; }
+            to { left: 100%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="sprite"></div>
+</body>
+</html>
