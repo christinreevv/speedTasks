@@ -1,56 +1,116 @@
+<!-- РЕШАЮ -->
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Куб</title>
+    <title>3D Куб с 9 частями на каждой грани</title>
     <style>
+
         body {
+            margin: 0;
+            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            background: #222;
-            perspective: 800px;
+            background-color: #1a1a1a;
+            perspective: 1000px;
         }
 
-        .cube {
-            width: 200px;
-            height: 200px;
+        .scene {
+            width: 300px;
+            height: 300px;
             position: relative;
             transform-style: preserve-3d;
-            animation: rotate 5s infinite linear;
+            animation: rotate 10s infinite linear;
+        }
+
+        @keyframes rotate {
+            from {
+                transform: rotateX(0deg) rotateY(0deg);
+            }
+            to {
+                transform: rotateX(360deg) rotateY(360deg);
+            }
         }
 
         .face {
             position: absolute;
-            width: 200px;
-            height: 200px;
-            background: rgba(255, 255, 255, 0.2);
-            border: 1px solid #fff;
-            display: flex;
-            flex-wrap: wrap;
+            width: 300px;
+            height: 300px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(3, 1fr);
+            background-color: rgba(0, 128, 255, 0.7);
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
         }
 
         .face div {
-            width: 66px;
-            height: 66px;
-            border: 1px solid #999;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background-color: rgba(255, 255, 255, 0.1);
         }
 
-        @keyframes rotate {
-            from { transform: rotateX(0) rotateY(0); }
-            to { transform: rotateX(360deg) rotateY(360deg); }
+        /* Расположение граней */
+        .front {
+            transform: rotateY(0deg) translateZ(150px);
+        }
+
+        .back {
+            transform: rotateY(180deg) translateZ(150px);
+        }
+
+        .left {
+            transform: rotateY(-90deg) translateZ(150px);
+        }
+
+        .right {
+            transform: rotateY(90deg) translateZ(150px);
+        }
+
+        .top {
+            transform: rotateX(90deg) translateZ(150px);
+        }
+
+        .bottom {
+            transform: rotateX(-90deg) translateZ(150px);
         }
     </style>
 </head>
 <body>
-    <div class="cube">
-        <div class="face" style="transform: translateZ(100px);">
-            <div></div><div></div><div></div>
-            <div></div><div></div><div></div>
-            <div></div><div></div><div></div>
-        </div>
+
+<div class="scene">
+    <div class="face front">
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
     </div>
+    <div class="face back">
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+    </div>
+    <div class="face left">
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+    </div>
+    <div class="face right">
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+    </div>
+    <div class="face top">
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+    </div>
+    <div class="face bottom">
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+        <div></div><div></div><div></div>
+    </div>
+</div>
+
 </body>
 </html>
